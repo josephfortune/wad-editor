@@ -662,6 +662,14 @@ function addTexture(texture) {
 }
 
 
+
+/********************************************************
+ * removeTexture()
+ *
+ * removes the texture that is selected in the texture
+ * list form, both from the form and from the internal
+ * texture array.
+ ********************************************************/
 function removeTexture() {
   // Make sure there are actually textures available to remove
   if (textures.length == 0)
@@ -691,6 +699,13 @@ function removeTexture() {
 }
 
 
+
+/********************************************************
+ * setDisableInterface()
+ *
+ * Enables/Disables the form elements depending on the
+ * boolean argument.
+ ********************************************************/
 function setDisableInterface(boolean) {
   document.getElementById("upload").disabled = boolean;
   document.getElementById("add_img").disabled = boolean;
@@ -702,6 +717,13 @@ function setDisableInterface(boolean) {
 
 
 
+/********************************************************
+ * rename()
+ *
+ * Renames a texture to whatever is in the rename form
+ * element and updates the texture name in both the form
+ * list and its internal object in the texture array.
+ ********************************************************/
 function rename() {
   var newName = document.getElementById("rename").value;
   var status = document.getElementById("status");

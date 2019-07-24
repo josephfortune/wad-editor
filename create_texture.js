@@ -47,6 +47,30 @@ function createPalette(size, buffer) {
     // Add the colors to the palette
     for (var i = 0, color = 0; i < size; i++, color += step) {
       palette.push(colors[color]);
+
+      // Make sure the colors we skip over arent 0,0,255 BLUE, if so, add it
+      for (var j = 1; j < step; j++) {
+
+        // Get the current skipped color
+        var skipped = colors[color+j];
+
+        // Check if skipped color is 0,0,255 blue
+        if (skipped.r == 0 && skipped.g == 0 && skipped.b == 255) {
+
+          // Make sure were not at the end of the palette before pushing blue
+          if (i < 255) {
+            // Add blue to palette
+            palette.push({r:0, g:0, b:255});
+          }
+          else {
+            // Replace last index with blue, who cares what that final low-freq color was anyway
+            palette[255] = {r:0, g:0, b:255};
+          }
+
+          // update the palette index so we don't add extra colors beyond index 255
+          i++;
+        }
+      }
     }
   }
 
