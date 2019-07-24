@@ -1,0 +1,62 @@
+body {
+  text-align:center;
+  background-color: #4d4d4d;
+  font-family: Consolas,monaco,monospace; 
+  color: white;
+}
+
+button, input {
+  font-family: Consolas,monaco,monospace; 
+  margin: 4px;
+  background-color: #333333;
+  border: none;
+  color: #F5F5F5;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+input {
+  width: 400px;
+}
+
+button {
+  width: 150px;
+  border: 1px solid white;
+}
+
+select {
+  background-color: white;
+  width: 200px;
+}
+
+canvas {
+  background-color: black;
+  margin: 10px;
+}
+
+table {
+  width: 80%;
+  margin: auto;
+}
+
+td {
+  width: 30%;
+}
+
+#status {
+  background-color: #333333;
+  width: 100%;
+}
+
+#rename {
+  background-color: white; 
+  color: #333333;
+}
+
+.center {
+  text-align: center;
+}
+

@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Joe's Wad Editor</title>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  
+  <body>
+    <h1>Joe's WAD Editor</h1>
+    <h3>Create or modify Half-Life WAD3 files</h3>
+
+    <table>
+      <tr>
+        <td>
+          
+          <br><br>
+          Open WAD
+          <input id="upload" type="file" oninput="upload()" />
+          <br><br>
+          Add Image
+          <input id="add_img" type="file" accept=".bmp, .png, .jpg, .gif" onchange="add_img_handler()" />
+          <br><br>
+          Rename
+          <input id="rename" type="text" oninput="rename()"></input>
+          <br><br>
+          <div style="text-align:center;">
+            <button onclick="buildWad()" id="download">Save WAD</button>
+            <button onclick="removeTexture()" id="remove">Delete</button>
+          </div>
+          <br>
+        </td>
+
+        <td class="center">
+          <select id="texture_list" size="18" onchange="onSelectTexture()"></select>
+        </td>
+        <td class="center">
+          <canvas width="0" height="0" id="viewport"></canvas>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=3>
+          <input id="status" type="text" value="Status: Ready."></input>
+        </td>
+      </tr>
+    </table>
+    You can contribute to this project via github <a href="https://github.com/josephfortune/wad-editor">here</a>.
+    
+  </body>
+</html>
