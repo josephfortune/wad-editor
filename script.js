@@ -32,7 +32,7 @@ function upload() {
 
   // Get the file
   var file = document.getElementById("upload").files[0];
-
+  file_name = file.name
   // Create a FileReader to read file
   var reader = new FileReader();
   
@@ -102,6 +102,7 @@ function parseWad(buffer) {
 
   // Display first texture as default
   var texture = retrieveTexture(dv, entries[0]);
+  document.getElementById("texture_list").selectedIndex = 0
   displayTexture(texture);
 }
 
@@ -542,7 +543,7 @@ function exportZip() {
 			saveAs(content, `${file_name}.zip`);
 		});
 	// re-display the currently selected texture
-	displayTexture(document.getElementById("texture_list").selectedIndex)
+	displayTexture(textures[document.getElementById("texture_list").selectedIndex])
 }
 
 /********************************************************
