@@ -13,7 +13,7 @@
 "use strict";
 
 var textures = []; // A global array containing all the texture objects
-
+var file_name = "" // store the name of the currently open WAD file
 
 
 /********************************************************
@@ -32,7 +32,7 @@ function upload() {
 
   // Get the file
   var file = document.getElementById("upload").files[0];
-
+  file_name = file.name
   // Create a FileReader to read file
   var reader = new FileReader();
   
@@ -102,6 +102,7 @@ function parseWad(buffer) {
 
   // Display first texture as default
   var texture = retrieveTexture(dv, entries[0]);
+  document.getElementById("texture_list").selectedIndex = 0
   displayTexture(texture);
 }
 
@@ -520,7 +521,30 @@ function saveData(data, fileName) {
     window.URL.revokeObjectURL(url);
 }
 
-
+/********************************************************
+ * exportZip()
+ *
+ * Build a zip from all textures and save it
+ ********************************************************/
+function exportZip() {
+	var zip = new JSZip();
+	// create a folder with the name of the file to prevent a mess on "extract here"
+	var img = zip.folder(file_name.toLowerCase().replace(".wad", ""));
+	var canvas = document.getElementById("viewport");
+	for (var i = 0; i < textures.length; i++) {
+		// display each texture to get it's data URL
+		displayTexture(textures[i])
+		// convert the dataURL to base64 and save it to a file
+		img.file(`${textures[i].name}.png`, canvas.toDataURL().replace(/^data:image\/(png|jpg);base64,/, ""), {base64: true});
+	}
+	zip.generateAsync({type:"blob"})
+		.then(function(content) {
+			// see FileSaver.js
+			saveAs(content, `${file_name}.zip`);
+		});
+	// re-display the currently selected texture
+	displayTexture(textures[document.getElementById("texture_list").selectedIndex])
+}
 
 /********************************************************
  * add_img_handler()

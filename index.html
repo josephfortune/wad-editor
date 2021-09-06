@@ -1,6 +1,8 @@
 <html>
   <head>
     <title>Joe's Wad Editor</title>
+    <script type="text/javascript" src="jszip.min.js"></script>
+    <script type="text/javascript" src="FileSaver.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -25,6 +27,7 @@
           <br><br>
           <div style="text-align:center;">
             <button onclick="buildWad()" id="download">Save WAD</button>
+            <button onclick="exportZip()" id="export">Export to ZIP</button>
             <button onclick="removeTexture()" id="remove">Delete</button>
           </div>
           <br>
